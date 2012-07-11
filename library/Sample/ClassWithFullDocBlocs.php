@@ -19,7 +19,7 @@ class Sample_ClassWithFullDocBlocs
     /**
      * This is a sample method2
      *
-     * @param Zend_Config $param1
+     * @param Zend_Config $param
      */
     public function sampleMethod2With1Parameters(Zend_Config $param)
     {
