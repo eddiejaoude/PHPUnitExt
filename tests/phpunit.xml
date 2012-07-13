@@ -3,6 +3,7 @@
 
         <testsuite name="Application unit test suite">
             <directory>./core</directory>
+            <directory>./library</directory>
         </testsuite>
 
     </testsuites>
