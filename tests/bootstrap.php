@@ -4,6 +4,8 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path(),
 )));
 
+defined('CODE_PATH') || define('CODE_PATH', realpath(dirname(__FILE__) . '/../library/Sample'));
+
 require_once 'Zend/Loader/Autoloader.php';
 $autoloader = Zend_Loader_Autoloader::getInstance();
 $autoloader->registerNamespace('Sample_');
