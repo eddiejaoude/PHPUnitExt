@@ -10,6 +10,7 @@ require_once 'Zend/Loader/Autoloader.php';
 $autoloader = Zend_Loader_Autoloader::getInstance();
 $autoloader->registerNamespace('Sample_');
 $autoloader->registerNamespace('Test_');
+$autoloader->registerNamespace('PHPUnitExt_');
 
 abstract class BaseTestCase extends PHPUnit_Framework_TestCase {
 
