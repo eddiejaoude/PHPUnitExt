@@ -28,11 +28,8 @@ class Test_Core_FileTest extends BaseTestCase
 
     public function testLineLength2()
     {
-        $test = new PHPUnitExt_LineLengthTest(CODE_PATH . '/ClassWithFullDocBlocs.php');
-
-        $result = PHPUnit_TextUI_TestRunner::run($test);
-
-        return $result;
+        //$this->assertFileLineLength(CODE_PATH . '/ClassWithFullDocBlocs.php');
+        $this->assertPathFilesLineLength(CODE_PATH);
     }
 
 

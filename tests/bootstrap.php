@@ -12,7 +12,8 @@ $autoloader->registerNamespace('Sample_');
 $autoloader->registerNamespace('Test_');
 $autoloader->registerNamespace('PHPUnitExt_');
 
-abstract class BaseTestCase extends PHPUnit_Framework_TestCase {
+abstract class BaseTestCase extends PHPUnitExt_TestCase
+{
 
     public function setUp() {
         parent::setUp();
