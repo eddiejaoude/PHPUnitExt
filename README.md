@@ -13,10 +13,10 @@ Core tests required on any zf project, inc. line endings, debug code, docbloc va
 - bad code ( checks for: eval,goto, new Exception - should be custom exception)
 - docblock
 
-- line length (checks for line length >70)
-- excessive parameter list (> 3), suggest moving to DI
-- method name that returns bool, should be isX() or hasX()
-- no public class attributes
+- line length (checks for line length > 70)
+- excessive parameter list (> 3), suggest moving to array or DI
+- method name that returns bool, should be isMethodName() or hasMethodName()
+- no public attributes in a clas, should be protected/private & have getters/setters
 
 - dead code
 - copied code
