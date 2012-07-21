@@ -18,7 +18,7 @@ class PHPUnitExt_TestCase extends PHPUnit_Framework_TestCase
         }
     }
 
-    public function assertPathFilesLineLength($directoryPath, $length = 70, $message = '')
+    public function assertFileLineLengthInPath($directoryPath, $length = 70, $message = '')
     {
         $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directoryPath));
         foreach ($files as $file) {

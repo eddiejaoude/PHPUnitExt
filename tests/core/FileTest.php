@@ -29,7 +29,7 @@ class Test_Core_FileTest extends BaseTestCase
     public function testLineLength2()
     {
         //$this->assertFileLineLength(CODE_PATH . '/ClassWithFullDocBlocs.php');
-        $this->assertPathFilesLineLength(CODE_PATH);
+        $this->assertFileLineLengthInPath(CODE_PATH);
     }
 
 
