@@ -20,6 +20,5 @@ Core tests required on any zf project, inc. line endings, debug code, docbloc va
 
 - dead code
 - copied code
-- method < 40 lines of code?
+- method > 40 lines of code
 - use (2 == $x) rather than ($x == 2)
--
