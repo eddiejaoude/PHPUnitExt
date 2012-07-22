@@ -1,32 +1,6 @@
 <?php
-/**
- * Zend test extension
- */
-class PHPUnitExt_TestCase extends PHPUnit_Framework_TestCase
+class PHPUnitExt_Assertion_Core implements PHPUnitExt_Assertion_Interface
 {
-
-    public function assertFileLineLength($file, $length = 70, $message = '')
-    {
-        $lines = file($file);
-
-        foreach ($lines as $key => $line) {
-            $this->_incrementAssertionCount();
-            $constraint = new PHPUnitExt_Constraint_LineLength($length);
-            if (!$constraint->evaluate($line)) {
-                $constraint->fail($file, $key, $length);
-            }
-        }
-    }
-
-    public function assertFileLineLengthInPath($directoryPath, $length = 70, $message = '')
-    {
-        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directoryPath));
-        foreach ($files as $file) {
-            $this->assertFileLineLength($file, $length, $message);
-        }
-    }
-
-
 
     /**
      * Increment assertion count

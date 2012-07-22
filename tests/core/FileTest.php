@@ -3,33 +3,40 @@
  * Test all files
  *
  * @author Eddie Jaoude
- * @package Test
+ * @package PHPUnitExt
  */
 
 class Test_Core_FileTest extends BaseTestCase
 {
-    public function testLineEnding()
-    {
-        $adapter = new Test_File_Adapter_LineEnding();
-        $adapter->setFile(CODE_PATH . '/ClassWithFullDocBlocs.php');
 
-        $fileTest = new Test_File_Core($adapter);
-        $this->assertEquals(true, $fileTest->getResult());
+    /**
+     * Test the line length of a file
+     */
+    public function testLineLengthOfFile()
+    {
+        $assertion = 'PHPUnitExt_Assertion_File';
+        $constraint = 'assertFileLineLength';
+        $data = array(
+            'file' => CODE_PATH . '/ClassWithFullDocBlocs.php',
+            'length' => 100,
+        );
+
+        PHPUnitExt_Suite::factory($assertion, $constraint, $data);
     }
 
-    public function testLineLength()
+    /**
+     * Test line length of all files in directory
+     */
+    public function testLineLengthOfDirectory()
     {
-        $adapter = new Test_File_Adapter_LineLength();
-        $adapter->setFile(CODE_PATH . '/ClassWithFullDocBlocs.php');
+        $assertion = 'PHPUnitExt_Assertion_File';
+        $constraint = 'assertFileLineLengthInPath';
+        $data = array(
+            'path' => CODE_PATH,
+            'length' => 100,
+        );
 
-        $fileTest = new Test_File_Core($adapter);
-        $this->assertEquals(true, $fileTest->getResult());
-    }
-
-    public function testLineLength2()
-    {
-        //$this->assertFileLineLength(CODE_PATH . '/ClassWithFullDocBlocs.php');
-        $this->assertFileLineLengthInPath(CODE_PATH);
+        PHPUnitExt_Suite::factory($assertion, $constraint, $data);
     }
 
 
