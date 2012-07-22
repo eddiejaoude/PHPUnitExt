@@ -27,3 +27,4 @@ class Sample_ClassWithFullDocBlocs
     }
 
 }
+// Really long line --------------------------------------------------------------------------------
