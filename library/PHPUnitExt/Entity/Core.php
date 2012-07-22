@@ -52,7 +52,7 @@ class PHPUnitExt_Entity_Core implements PHPUnitExt_Entity_Interface
      */
     public function getConstraint()
     {
-        $this->_constraint;
+        return $this->_constraint;
     }
 
     /**
@@ -61,15 +61,16 @@ class PHPUnitExt_Entity_Core implements PHPUnitExt_Entity_Interface
      */
     public function setData($data)
     {
+        $this->_data = (array) $data;
         return $this;
     }
 
     /**
-     * @param array $data
+     * @return array
      */
-    public function getData($data)
+    public function getData()
     {
-        $this->_data = (array) $data;
+        return $this->_data;
     }
 
 }

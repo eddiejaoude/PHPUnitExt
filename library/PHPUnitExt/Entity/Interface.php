@@ -1,11 +1,14 @@
 <?php
+/**
+ * Entity interface
+ */
 interface PHPUnitExt_Entity_Interface
 {
 
     /**
      * @abstract
      *
-     * @param $assertion
+     * @param string $assertion
      *
      * @return PHPUnitExt_Exception
      */
@@ -44,10 +47,8 @@ interface PHPUnitExt_Entity_Interface
     /**
      * @abstract
      *
-     * @param $data
-     *
      * @return PHPUnitExt_Exception
      */
-    public function getData($data);
+    public function getData();
 
 }

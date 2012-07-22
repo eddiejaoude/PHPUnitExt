@@ -20,16 +20,15 @@ class PHPUnitExt_Suite
      *
      * @static
      *
-     * @param $assertion
-     * @param $constraint
-     * @param $data
+     * @param PHPUnitExt_Entity_Interface $entity
      *
      * @return PHPUnitExt_Assertion_Interface
      */
-    public static function factory($assertion, $constraint, $data)
+    public static function factory(PHPUnitExt_Entity_Interface $entity)
     {
+        $assertion = $entity->getAssertion();
         $factory = new $assertion;
-        $factory->$constraint($data);
+        $factory->{$entity->getConstraint()}($entity->getData());
 
         return $factory;
     }

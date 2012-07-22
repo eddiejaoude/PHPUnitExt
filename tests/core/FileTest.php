@@ -5,7 +5,6 @@
  * @author Eddie Jaoude
  * @package PHPUnitExt
  */
-
 class Test_Core_FileTest extends BaseTestCase
 {
 
@@ -14,14 +13,18 @@ class Test_Core_FileTest extends BaseTestCase
      */
     public function testLineLengthOfFile()
     {
-        $assertion = 'PHPUnitExt_Assertion_File';
-        $constraint = 'assertFileLineLength';
-        $data = array(
-            'file' => CODE_PATH . '/ClassWithFullDocBlocs.php',
-            'length' => 100,
+        $entity = new PHPUnitExt_Entity_Standard();
+        $entity
+            ->setAssertion('PHPUnitExt_Assertion_File')
+            ->setConstraint('assertFileLineLength')
+            ->setData(
+            array(
+                'file' => CODE_PATH . '/ClassWithFullDocBlocs.php',
+                'length' => 110,
+            )
         );
 
-        PHPUnitExt_Suite::factory($assertion, $constraint, $data);
+        PHPUnitExt_Suite::factory($entity);
     }
 
     /**
@@ -29,14 +32,18 @@ class Test_Core_FileTest extends BaseTestCase
      */
     public function testLineLengthOfDirectory()
     {
-        $assertion = 'PHPUnitExt_Assertion_File';
-        $constraint = 'assertFileLineLengthInPath';
-        $data = array(
-            'path' => CODE_PATH,
-            'length' => 100,
+        $entity = new PHPUnitExt_Entity_Standard();
+        $entity
+            ->setAssertion('PHPUnitExt_Assertion_File')
+            ->setConstraint('assertFileLineLengthInPath')
+            ->setData(
+            array(
+                'path' => CODE_PATH,
+                'length' => 110,
+            )
         );
 
-        PHPUnitExt_Suite::factory($assertion, $constraint, $data);
+        PHPUnitExt_Suite::factory($entity);
     }
 
 
