@@ -1,6 +1,6 @@
 <?php
 /**
- * Entity
+ * Entity core
  */
 class PHPUnitExt_Entity_Core implements PHPUnitExt_Entity_Interface
 {
