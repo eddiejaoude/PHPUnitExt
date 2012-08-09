@@ -1,4 +1,10 @@
 <?php
+/**
+ * Constraint interface
+ *
+ * @author Eddie Jaoude
+ * @package PHPUnitExt
+ */
 interface PHPUnitExt_Constraint_Interface
 {
 

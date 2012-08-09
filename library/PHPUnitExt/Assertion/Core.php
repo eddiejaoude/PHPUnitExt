@@ -1,4 +1,10 @@
 <?php
+/**
+ * Assertion core
+ *
+ * @author Eddie Jaoude
+ * @package PHPUnitExt
+ */
 class PHPUnitExt_Assertion_Core implements PHPUnitExt_Assertion_Interface
 {
 

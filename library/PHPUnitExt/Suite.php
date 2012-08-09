@@ -3,34 +3,51 @@
  * PHP unit extension suite (factory)
  *
  * EXAMPLE
- * $assertion = 'PHPUnitExt_Assertion_File';
- * $constraint = 'assertFileLineLength';
- * $data = array(
- *      'file' => CODE_PATH . '/ClassWithFullDocBlocs.php',
- *      'length' => 100,
- * );
- * PHPUnitExt_Suite::factory($assertion, $constraint, $data);
+ * $file = CODE_PATH . '/ClassWithFullDocBlocs.php';
+ * $length = 8  0;
+ *
+ * PHPUnitExt_Suite::factory('PHPUnitExt_Assertion_File')->assertFileLineLength($file, $length);
+ *
+ * -- OR --
+ *
+ * $file = CODE_PATH . '/ClassWithFullDocBlocs.php';
+ * $length = 80;
+ *
+ * $assertion = new PHPUnitExt_Assertion_File;
+ * $assertion->assertFileLineLength($file, $length);
  *
  */
 class PHPUnitExt_Suite
 {
+    /**
+     * @var PHPUnitExt_Assertion_Interface
+     */
+    protected static $factory;
 
     /**
      * Factory to build test objects
      *
      * @static
      *
-     * @param PHPUnitExt_Entity_Interface $entity
+     * @param string
      *
      * @return PHPUnitExt_Assertion_Interface
      */
-    public static function factory(PHPUnitExt_Entity_Interface $entity)
+    public static function factory($class)
     {
-        $assertion = $entity->getAssertion();
-        $factory = new $assertion;
-        $factory->{$entity->getConstraint()}($entity->getData());
+        self::$factory = new $class;
+        return self::$factory;
+    }
 
-        return $factory;
+    /**
+     * Passes called method onto factory object
+     *
+     * @param $method
+     * @param $arg
+     */
+    public function __call($method, $arg)
+    {
+        self::$factory->{$method}($arg);
     }
 
 

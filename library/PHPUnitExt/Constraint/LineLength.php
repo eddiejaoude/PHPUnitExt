@@ -1,4 +1,10 @@
 <?php
+/**
+ * Line length constraint
+ *
+ * @author Eddie Jaoude
+ * @package PHPUnitExt
+ */
 class PHPUnitExt_Constraint_LineLength implements PHPUnitExt_Constraint_Interface
 {
 
@@ -17,6 +23,14 @@ class PHPUnitExt_Constraint_LineLength implements PHPUnitExt_Constraint_Interfac
         return false;
     }
 
+    /**
+     * Fail test report (exception)
+     *
+     * @param $data
+     *
+     * @return bool|void
+     * @throws PHPUnitExt_Constraint_Exception
+     */
     public function fail($data)
     {
         $data['key']++; // index starts from 0, but lines should be from 1
