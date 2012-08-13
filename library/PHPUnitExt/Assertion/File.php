@@ -42,18 +42,16 @@ class PHPUnitExt_Assertion_File extends PHPUnitExt_Assertion_Core
     }
 
     /**
-     * @param string $path
-     * @param int $length
+     * Assert no conflicts in file
+     *
+     * @param string $file
+     * @param string $fileContent
+     * @param string $fileExtensions
      */
-    public function assertFileLineLengthInPath($path, $length = 80)
+    public function assertNoConflicts($file, $fileContent = '====', $fileExtensions = 'local')
     {
-        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
-        foreach ($files as $file) {
-            $this->assertFileLineLength($file->getPathName(), $length);
-        }
+
     }
-
-
 
 
 

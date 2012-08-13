@@ -27,7 +27,7 @@ class Test_Core_FileTest extends BaseTestCase
         $path = CODE_PATH;
         $length = 110;
 
-        PHPUnitExt_Suite::factory('PHPUnitExt_Assertion_File')->assertFileLineLengthInPath($path, $length);
+        PHPUnitExt_Suite::factory('PHPUnitExt_Assertion_Path')->assertFileLineLength($path, $length);
     }
 
 
