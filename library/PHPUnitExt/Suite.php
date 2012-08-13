@@ -32,9 +32,14 @@ class PHPUnitExt_Suite
      * @param string
      *
      * @return PHPUnitExt_Assertion_Interface
+     * @throws PHPUnitExt_Exception
      */
     public static function factory($class)
     {
+        if (!class_exists($class)) {
+            throw new PHPUnitExt_Exception('Class ' . $class . ' does not exist');
+        }
+
         self::$factory = new $class;
         return self::$factory;
     }
