@@ -18,7 +18,7 @@ class PHPUnitExt_Constraint_LineLength implements PHPUnitExt_Constraint_Interfac
      */
     public function test($data)
     {
-        if (empty($data['line']) || empty($data['length'])) {
+        if (!isset($data['line']) || !isset($data['length'])) {
             throw new PHPUnitExt_Constraint_Exception(
                 'Must contain $data[\'line\'] and $data[\'length\'] elements in $data array'
             );
@@ -40,7 +40,7 @@ class PHPUnitExt_Constraint_LineLength implements PHPUnitExt_Constraint_Interfac
      */
     public function fail($data)
     {
-        if (empty($data['key']) || empty($data['file']) || empty($data['length'])) {
+        if (!isset($data['key']) || !isset($data['file']) || !isset($data['length'])) {
             throw new PHPUnitExt_Constraint_Exception(
                 'Must contain $data[\'key\'], $data[\'file\'] and $data[\'length\'] elements in $data array'
             );

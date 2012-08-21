@@ -103,9 +103,9 @@ class PHPUnitExt_Constraint_LineLengthTest extends BaseTestCase
         try {
             $this->_constraint->fail($data);
         } catch (PHPUnitExt_Constraint_Exception $e) {
-            $exception = 'Must contain $data[\'key\'], $data[\'file\'] and $data[\'length\'] elements in $data array';
-            $message = sprintf($exception, $data['file'], $data['key'], $data['length']);
-            $this->assertEquals($e->getMessage(), $message);
+            $exception = 'Failed asserting file %s on line %d is less than %s';
+            $message = sprintf($exception, $data['file'], $data['key'] + 1, $data['length']);
+            $this->assertEquals($message, $e->getMessage());
             return true;
         } catch (Exception $e) {
             $this->fail('PHPUnitExt_Constraint_Exception Exception not thrown');

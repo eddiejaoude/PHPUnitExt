@@ -18,7 +18,5 @@ Core tests required on any zf project, inc. line endings, debug code, docbloc va
 - method name that returns bool, should be isMethodName() or hasMethodName()
 - no public attributes in a class, should be protected/private & have getters/setters
 
-- dead code (phphdcd)
-- copied code (phpcpd)
 - method > 40 lines of code
 - use (2 == $x) rather than ($x == 2)
