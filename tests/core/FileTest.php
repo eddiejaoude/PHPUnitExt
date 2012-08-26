@@ -16,7 +16,9 @@ class Test_Core_FileTest extends BaseTestCase
         $file = CODE_PATH . '/ClassWithFullDocBlocs.php';
         $length = 110;
 
-        PHPUnitExt_Suite::factory('PHPUnitExt_Assertion_File')->assertFileLineLength($file, $length);
+        PHPUnitExt_Suite::factory('PHPUnitExt_Assertion_File')
+            ->setFile($file)
+            ->assertLineLength($length);
     }
 
     /**
@@ -27,8 +29,38 @@ class Test_Core_FileTest extends BaseTestCase
         $path = CODE_PATH;
         $length = 110;
 
-        PHPUnitExt_Suite::factory('PHPUnitExt_Assertion_Path')->assertFileLineLength($path, $length);
+        PHPUnitExt_Suite::factory('PHPUnitExt_Assertion_Path')
+            ->setPath($path)
+            ->assertFileLineLength($length);
     }
+
+    /**
+     * Test the file does not contain '====' (conflict)
+     */
+    public function testContentsOfFile()
+    {
+        $file = CODE_PATH . '/ClassWithFullDocBlocs.php';
+        $contains = '====';
+
+        PHPUnitExt_Suite::factory('PHPUnitExt_Assertion_File')
+            ->setFile($file)
+            ->assertNoConflicts($file, $contains);
+    }
+
+    /**
+     * Test the file does not contain '====' (conflict)
+     */
+    public function testContentsOfPath()
+    {
+        $path = CODE_PATH;
+        $contains = '====';
+
+        PHPUnitExt_Suite::factory('PHPUnitExt_Assertion_Path')
+            ->setPath($path)
+            ->assertNoConflicts($contains);
+    }
+
+
 
 
 }
