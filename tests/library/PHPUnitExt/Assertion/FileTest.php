@@ -79,11 +79,30 @@ class PHPUnitExt_Constraint_FileTest extends BaseTestCase
         $this->fail('Exception not thrown');
     }
 
-    public function testAssertLineLength()
+    public function testAssertLineLengthWithSuccess()
     {
         $this->_assertion->addContent('abcdef');
         $this->_assertion->addContent('123456');
-        $this->_assertion->assertLineLength($length = 80);
+        $this->_assertion->assertLineLength(80);
+    }
+
+    public function testAssertLineLengthThrowFailureException()
+    {
+        $this->_assertion->addContent('abcdef');
+        $this->_assertion->addContent('123456');
+
+        try {
+            $this->_assertion->assertLineLength(5);
+        } catch (PHPUnitExt_Constraint_Exception $e) {
+            $this->assertEquals(
+                'Failed asserting line 1 is less than 5',
+                $e->getMessage()
+            );
+            return true;
+        } catch (Exception $e) {
+            $this->fail('PHPUnitExt_Assertion_Exception Exception not thrown');
+        }
+        $this->fail('Exception not thrown');
     }
 
 }

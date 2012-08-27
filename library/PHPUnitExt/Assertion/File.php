@@ -111,7 +111,7 @@ class PHPUnitExt_Assertion_File extends PHPUnitExt_Assertion_Core
                 !$constraint->test(
                     array(
                         'length' => $length,
-                        'line'   => $key
+                        'line'   => $line
                     )
                 )
             ) {
