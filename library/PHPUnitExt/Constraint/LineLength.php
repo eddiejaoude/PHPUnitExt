@@ -40,15 +40,18 @@ class PHPUnitExt_Constraint_LineLength implements PHPUnitExt_Constraint_Interfac
      */
     public function fail($data)
     {
-        if (!isset($data['key']) || !isset($data['file']) || !isset($data['length'])) {
+        if (!isset($data['key']) || !isset($data['length'])) {
             throw new PHPUnitExt_Constraint_Exception(
                 'Must contain $data[\'key\'], $data[\'file\'] and $data[\'length\'] elements in $data array'
             );
         }
 
         $data['key']++; // index starts from 0, but lines should be from 1
-        $failure = 'Failed asserting file %s on line %d is less than %s';
-        $failure = sprintf($failure, $data['file'], $data['key'], $data['length']);
+        $failure = 'Failed asserting line %d is less than %d';
+        if (!empty($data['file'])) {
+            $failure .= ' in file ' . $data['file'];
+        }
+        $failure = sprintf($failure, $data['key'], $data['length']);
         throw new PHPUnitExt_Constraint_Exception($failure);
     }
 

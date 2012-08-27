@@ -89,11 +89,35 @@ class PHPUnitExt_Constraint_LineLengthTest extends BaseTestCase
     }
 
     /**
-     * Test fail method
+     * Test fail method without file
      *
      * @return bool
      */
-    public function testFail()
+    public function testFailWithoutFile()
+    {
+        $data = array(
+            'key' => 0,
+            'length' => 10,
+        );
+        try {
+            $this->_constraint->fail($data);
+        } catch (PHPUnitExt_Constraint_Exception $e) {
+            $exception = 'Failed asserting line %d is less than %d';
+            $message = sprintf($exception, $data['key'] + 1, $data['length']);
+            $this->assertEquals($message, $e->getMessage());
+            return true;
+        } catch (Exception $e) {
+            $this->fail('PHPUnitExt_Constraint_Exception Exception not thrown');
+        }
+        $this->fail('Exception not thrown');
+    }
+
+    /**
+     * Test fail method with file
+     *
+     * @return bool
+     */
+    public function testFailWithFile()
     {
         $data = array(
             'key' => 0,
@@ -103,8 +127,8 @@ class PHPUnitExt_Constraint_LineLengthTest extends BaseTestCase
         try {
             $this->_constraint->fail($data);
         } catch (PHPUnitExt_Constraint_Exception $e) {
-            $exception = 'Failed asserting file %s on line %d is less than %s';
-            $message = sprintf($exception, $data['file'], $data['key'] + 1, $data['length']);
+            $exception = 'Failed asserting line %d is less than %d in file %s';
+            $message = sprintf($exception, $data['key'] + 1, $data['length'], $data['file']);
             $this->assertEquals($message, $e->getMessage());
             return true;
         } catch (Exception $e) {

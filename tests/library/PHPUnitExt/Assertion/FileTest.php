@@ -81,7 +81,9 @@ class PHPUnitExt_Constraint_FileTest extends BaseTestCase
 
     public function testAssertLineLength()
     {
-        //$this->_assertion->assertLineLength($file, $length = 80);
+        $this->_assertion->addContent('abcdef');
+        $this->_assertion->addContent('123456');
+        $this->_assertion->assertLineLength($length = 80);
     }
 
 }

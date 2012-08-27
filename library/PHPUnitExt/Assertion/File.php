@@ -111,14 +111,14 @@ class PHPUnitExt_Assertion_File extends PHPUnitExt_Assertion_Core
                 !$constraint->test(
                     array(
                         'length' => $length,
-                        'line'   => $line
+                        'line'   => $key
                     )
                 )
             ) {
                 $constraint->fail(
                     array(
                         'length' => $length,
-                        'file'   => $file,
+                        'file'   => $this->getFile(),
                         'key'    => $key
                     )
                 );
